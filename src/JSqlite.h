@@ -40,6 +40,8 @@ public:
 	virtual bool ExecStmt(const char *cmd,JStmt &stmt);
 
 	virtual const char *GetLastError();
+
+	virtual bool IsOpen();
 private:
 	sqlite3 *p_Database;
 	char m_ErrorMsg[ERRORLEN];

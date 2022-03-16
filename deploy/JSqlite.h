@@ -6,7 +6,7 @@
 
 
 
-class JStmt{
+SQLITE_API class  JStmt{
 public:
 	JStmt();
 	~JStmt();
@@ -26,7 +26,7 @@ private:
 
 
 
-class JSqlite
+SQLITE_API class  JSqlite
 {
 public:
 	JSqlite();
@@ -40,6 +40,8 @@ public:
 	virtual bool ExecStmt(const char *cmd,JStmt &stmt);
 
 	virtual const char *GetLastError();
+
+	virtual bool IsOpen();
 private:
 	sqlite3 *p_Database;
 	char m_ErrorMsg[ERRORLEN];

@@ -17,14 +17,14 @@ void PrintError1(char *buf,int len,const char *fmt,const char *msg){
 
 
 
-JSqlite::JSqlite(void)
+JSqlite::JSqlite()
 {
 	p_Database=NULL;
 	memset(m_ErrorMsg,0,ERRORLEN);
 
 }
 
-JSqlite::~JSqlite(void)
+JSqlite::~JSqlite()
 {
 
 	if(!p_Database){
@@ -36,7 +36,7 @@ JSqlite::~JSqlite(void)
 bool JSqlite::Open( const char *dbname )
 {
 	if(p_Database){
-			Close();
+		Close();
 	}
 
 	
@@ -99,7 +99,7 @@ const char * JSqlite::GetLastError()
 
 bool JSqlite::Close()
 {
-	if(!p_Database){
+	if(p_Database){
 		bool r=SQLITE_OK==sqlite3_close(p_Database);
 		
 		p_Database=NULL;
@@ -108,6 +108,11 @@ bool JSqlite::Close()
 	}
 
 	return true;
+}
+
+bool JSqlite::IsOpen()
+{
+	return p_Database!=NULL;
 }
 
 JStmt::JStmt()

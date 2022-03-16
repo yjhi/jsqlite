@@ -27,9 +27,8 @@ JSqlite::JSqlite()
 JSqlite::~JSqlite()
 {
 
-	if(!p_Database){
-		sqlite3_close(p_Database);
-		p_Database=NULL;
+	if(p_Database){
+		Close();
 	}
 }
 

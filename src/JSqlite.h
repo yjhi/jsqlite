@@ -17,7 +17,6 @@ public:
 	virtual int GetInt(int i);
 	virtual sqlite3_int64 GetInt64(int i);
 
-
     virtual sqlite3_stmt **Ptr();
 private:
 	sqlite3_stmt *p_Stmt;
@@ -38,6 +37,7 @@ public:
 	virtual bool ExecCmd(const char *cmd);
 
 	virtual bool ExecStmt(const char *cmd,JStmt &stmt);
+	virtual int ExecCount(const char *cmd);
 
 	virtual const char *GetLastError();
 

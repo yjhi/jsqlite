@@ -114,6 +114,29 @@ bool JSqlite::IsOpen()
 	return p_Database!=NULL;
 }
 
+int JSqlite::ExecCount( const char *cmd )
+{
+	if(!p_Database) {
+		PrintError(m_ErrorMsg,ERRORLEN,"database not open");
+		return -1;
+	}
+
+	JStmt stmt;
+
+	if(ExecStmt(cmd,stmt))
+	{
+		while(stmt.Next())
+		{
+			return stmt.GetInt(0);
+		}
+
+	}else{
+
+		return -2;
+	}
+
+}
+
 JStmt::JStmt()
 {
 	m_Result=-1;
